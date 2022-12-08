@@ -652,7 +652,7 @@ class AxionPhoton():
         return
     
     def BABYIAXOHALO(ax,col=[0.6, 0.1, 0.2],fs=15,RescaleByMass=False,text_on=True,text_shift=[1,1]):
-        # babyIAXOprojections
+        # BabyIAXO_Haloscope projection
         y2 = ax.get_ylim()[1]
         if RescaleByMass:
             rs1 = 1.0
@@ -660,14 +660,17 @@ class AxionPhoton():
         else:
             rs1 = 0.0
             rs2 = 1.0
-        dat = loadtxt("limit_data/AxionPhoton/Projections/BabyIAXO_prospect_2cavs.txt")
-        plt.plot(dat[:,0],dat[:,1]/(rs1*2e-10*dat[:,0]+rs2),'-',linewidth=1.5,color=col,zorder=0)
-        plt.fill_between(dat[:,0],dat[:,1]/(rs1*2e-10*dat[:,0]+rs2),y2=y2,facecolor=col,zorder=0,alpha=0.3)
+
+        dat = loadtxt("limit_data/AxionPhoton/Projections/BabyIAXO_4cav.txt")
+        plt.plot(dat[:,0],dat[:,1]/(rs1*2e-10*dat[:,0]+rs2),linewidth=1.5,color=col,zorder=0, linestyle='dashed')
+        plt.fill_between(dat[:,0],dat[:,1]/(rs1*2e-10*dat[:,0]+rs2),y2=y2,facecolor=col, edgecolor='None',zorder=0,alpha=0.3)
+
         if text_on:
             if rs1==0:
-                plt.text(text_shift[0]*1e-7,text_shift[1]*1e-12,r'{\bf babyIAXOH}',rotation=90,fontsize=fs,color=col,ha='left',va='top',clip_on=True)
+                plt.text(text_shift[0]*5e-6,text_shift[1]*7e-17,r'{\bf BabyIAXOHalo}',fontsize=fs,color=col,ha='left',va='top',clip_on=True)
+                plt.plot([5e-6,1.5e-6],[5e-17,6.5e-16],'k-',lw=1.5)
             else:
-                plt.text(text_shift[0]*2.5e-7,text_shift[1]*1.3e0,r'{\bf babyIAXOH}',rotation=90,fontsize=fs,color=col,ha='left',va='top',rotation_mode='anchor',clip_on=True)
+                plt.text(text_shift[0]*1.3e-6,text_shift[1]*5e0,r'{\bf BabyIAXOHalo}',rotation = 90,fontsize=fs,color=col,ha='left',va='top',rotation_mode='anchor',clip_on=True)
         return
 
     def BRASS(ax,col='darkred',fs=15,RescaleByMass=False,text_on=True,text_shift=[1,1]):
