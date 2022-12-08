@@ -661,7 +661,7 @@ class AxionPhoton():
             rs1 = 0.0
             rs2 = 1.0
 
-        dat = loadtxt("limit_data/AxionPhoton/Projections/BabyIAXO_4cav.txt")
+        dat = loadtxt("limit_data/AxionPhoton/Projections/BabyIAXO_prospect_4cavs.txt")
         plt.plot(dat[:,0],dat[:,1]/(rs1*2e-10*dat[:,0]+rs2),linewidth=1.5,color=col,zorder=0, linestyle='dashed')
         plt.fill_between(dat[:,0],dat[:,1]/(rs1*2e-10*dat[:,0]+rs2),y2=y2,facecolor=col, edgecolor='None',zorder=0,alpha=0.3)
 
